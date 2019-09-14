@@ -10,10 +10,18 @@ jobs:
       fail-fast: false
       matrix:
         go:
-        - 1.12
-        - 1.13
+          - 1.12
+          - 1.13
+        lnd:
+          - v0.7.1-beta
+          - v0.7.0-beta
+          - v0.6.1-beta
+          - v0.6.0-beta
 
     steps:
-    - uses: actions/checkout@v1.0.0
+      - uses: actions/checkout@v1.0.0
 
-    - run: docker build --build-arg "GOVER=${{ matrix.go }}" .
+      - run: >
+          docker build .
+          --build-arg "GOVER=${{ matrix.go }}"
+          --build-arg "LNDVER=${{ matrix.lnd }}"
