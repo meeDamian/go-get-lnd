@@ -8,6 +8,8 @@ RUN mkdir -p /src/
 COPY ./ /src/
 WORKDIR /src/
 
+ARG GOVER
+ARG LNDVER
 RUN sed -i  -e "s/GOVER/${GOVER}/g"  -e "s/LNDVER/${LNDVER}/g"  go.mod \
     && cat go.mod
 
