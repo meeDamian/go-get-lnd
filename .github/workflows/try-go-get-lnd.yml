@@ -33,7 +33,7 @@ jobs:
             DIR='src/'
           fi
 
-          docker build . \
+          docker build "${DIR}" \
             --build-arg "GOVER=${{ matrix.go }}" \
             --build-arg "LNDVER=${{ matrix.lnd }}"
 
