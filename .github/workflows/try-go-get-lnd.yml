@@ -3,8 +3,7 @@ name: Go get lnd
 on: push
 
 jobs:
-  build:
-    name: Attempt to go-get lnd
+  go-get:
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
