@@ -8,6 +8,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        way:
+          - go-get
+          - go-build
+
         go:
           - 1.12
           - 1.13
@@ -18,17 +22,14 @@ jobs:
           - v0.6.1-beta
           - v0.6.0-beta
 
-        way:
-          - go-get
-          - go-build
-
     steps:
       - uses: actions/checkout@v1.0.0
 
-      - run: |
+      - name: Build
+        run: |
           DIR='.'
 
-          if [[ ${{ matrix.way }} = 'go-build' ]]; then
+          if [[ "${{ matrix.way }}" != 'go-get' ]]; then
             DIR='src/'
           fi
 
